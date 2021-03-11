@@ -7,26 +7,19 @@ Easy driver installation for Fujitsu SnapScan S1300, S1300i, S1100 and S300 scan
 Before installation please ensure that the unit is connected and switched on. No matter which method you use, you must restart the computer at the end befor you can use the scanner.
 
 ### Git
-
+```
 git clone https://github.com/bjoern-vh/scansnap-linux
 cd scansnap-linux
 sudo ./install.sh
+```
 
-### wget
+### wget/curl
 
 Missing files are automatically loaded during the installation process.
 
 ```
 wget -q https://raw.githubusercontent.com/bjoern-vh/scansnap-linux/main/install.sh
-chmod +x install.sh
-sudo ./install.sh
-```
-
-### curl
-
-Missing files are automatically loaded during the installation process.
-
-```
+# or
 curl --silent --output install.sh https://raw.githubusercontent.com/bjoern-vh/scansnap-linux/main/install.sh
 chmod +x install.sh
 sudo ./install.sh
