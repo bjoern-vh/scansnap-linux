@@ -10,7 +10,17 @@ Before installation please ensure that the unit is connected and switched on.
 ### Git
 
 git clone https://github.com/bjoern-vh/scansnap-linux
+cd scansnap-linux
 
+### wget
+
+wget -q https://raw.githubusercontent.com/bjoern-vh/scansnap-linux/main/install.sh
+chmod +x install.sh
+
+### curl
+
+curl --silent --output install.sh https://raw.githubusercontent.com/bjoern-vh/scansnap-linux/main/install.sh
+chmod +x install.sh
 
 ### Manual
 
