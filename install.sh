@@ -40,10 +40,10 @@ function pkg_install()
             exit 0
         fi
         if [ "$APT_UPDATE" -ne "1" ]; then
-            apt update -qq || echo "Package lists could not be updated"; exit 1
+            apt update -qq || (echo "Package lists could not be updated"; exit 1)
         fi
         APT_UPDATE=1
-	apt install "$install_pkgs" -qq || echo "An error occurs while package installation."; exit 1
+	apt install "$install_pkgs" -qq || (echo "An error occurs while package installation."; exit 1)
         install_pkgs=
     else
         echo "No new packages must be installed and all requirements are met."
@@ -122,7 +122,7 @@ else
     appendIfMissing "$setting" /etc/sane.d/epjitsu.conf
 fi
 
-adduser $USER scanner || echo "Could not add user to the group scanner"; exit 1
+adduser $USER scanner || echo "Could not add user to the group scanner" & exit 1
 
 product_id=$(grep 0x "$setting" | cut -d" " -f3)
 
@@ -131,9 +131,9 @@ if [ "$product_id" == "" ]; then
     exit 1
 fi
 
-echo "ATTRS{idVendor}==\"04c5\", ATTRS{idProduct}==\"$product_id\", MODE=\"0664\", GROUP=\"scanner\", ENV{libsane_matched}=\"yes\"" >> /etc/udev/rules.d/99-local.rules || echo "Could not create UDEV-rules"; exit 1
+echo "ATTRS{idVendor}==\"04c5\", ATTRS{idProduct}==\"$product_id\", MODE=\"0664\", GROUP=\"scanner\", ENV{libsane_matched}=\"yes\"" >> /etc/udev/rules.d/99-local.rules || (echo "Could not create UDEV-rules"; exit 1)
 
-chmod 744 $DRIVER_PATH/* || echo "Could not set the correct permissions for the driver files"; exit 1
+chmod 744 $DRIVER_PATH/* || (echo "Could not set the correct permissions for the driver files"; exit 1)
 
 echo "Installation is done. You have to reboot before you can use your scanner."
 
