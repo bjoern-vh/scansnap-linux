@@ -24,7 +24,7 @@ function sane_install()
     echo "Searching for missing packages..."
     check_pkg sane
     check_pkg sane-utils
-    check_pkg libsane-extras
+    #check_pkg libsane-extras
     pkg_install
 }
 
@@ -33,7 +33,6 @@ function pkg_install()
     if [ "$install_pkgs" != "" ]; then
         echo "This new packages will be installed:$install_pkgs"
         read -r -p "Is this ok? [y|N] " response
-        echo
         response=${response,,}
         if [[ ! $response =~ ^(yes|y) ]]; then
             echo "No changes were made"
@@ -111,7 +110,7 @@ else
     cp "$driver" "$DRIVER_PATH/"
 fi
 
-setting='settings/S'${SCANNERS[$model]'.conf"
+setting='settings/S'${SCANNERS[$model]'.conf'
 
 if [ ! -f "$setting" ]; then
     setting="/tmp/${SCANNERS[$model]}.conf"
