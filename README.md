@@ -4,7 +4,7 @@ Easy driver installation for Fujitsu SnapScan S1300, S1300i, S1100 and S300 scan
 
 ## Installation methods
 
-Before installation please ensure that the unit is connected and switched on. No matter which method you use, you must restart the computer at the end befor you can use the scanner.
+Before installation please ensure that the scanner is connected and switched on. No matter which method you use, you must restart the computer at the end before you can use the scanner.
 
 ### Git
 ```
