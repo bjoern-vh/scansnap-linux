@@ -5,7 +5,7 @@ All credits go to Josh Archer: https://www.josharcher.uk/code/install-scansnap-s
 
 ## Installation methods
 
-Before installation please ensure that the unit is connected and switched on. No matter which method you use, you must restart the computer at the end.
+Before installation please ensure that the unit is connected and switched on.
 
 ### Git
 
