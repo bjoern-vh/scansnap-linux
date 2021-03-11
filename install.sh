@@ -105,7 +105,7 @@ if [ ! -f "$driver" ]; then
     install_pkgs="wget"
     check_pkg
     pkg_install
-    wget -q "$REPO/raw/drivers/$driver" -O "$DRIVER_PATH/$driver"
+    wget -q "$REPO/raw/main/drivers/$driver" -O "$DRIVER_PATH/$driver"
 else
     cp "$driver" "$DRIVER_PATH/"
 fi
@@ -113,17 +113,20 @@ fi
 setting='settings/S'${SCANNERS[$model]'.conf"
 
 if [ ! -f "$setting" ]; then
-    wget -q "$REPO/raw/settings/$setting" -O "/tmp/${SCANNERS[$model]}.conf"
+    setting="/tmp/${SCANNERS[$model]}.conf"
+    wget -q "$REPO/raw/main/settings/$setting" -O "$setting"
+    appendIfMissing "$setting" /etc/sane.d/epjitsu.conf
+    rm "$setting"
+else
+    appendIfMissing "$setting" /etc/sane.d/epjitsu.conf
 fi
-
-appendIfMissing "settings/${SCANNERS[$model]}.conf" /etc/sane.d/epjitsu.conf
 
 adduser $USER scanner || echo "Could not add user to the group scanner"; exit 1
 
 product_id=$(grep 0x "$setting" | cut -d" " -f3)
 
 if [ "$product_id" == "" ]; then
-    echo "Colud not detect the product id"
+    echo "Could not detect the product id"
     exit 1
 fi
 
