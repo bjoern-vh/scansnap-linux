@@ -43,7 +43,7 @@ function pkg_install()
             apt update -qq || (echo "Package lists could not be updated"; exit 1)
         fi
         APT_UPDATE=1
-	apt install "$install_pkgs" -qq || (echo "An error occurs while package installation."; exit 1)
+	apt install $install_pkgs -qq || (echo "An error occurs while package installation."; exit 1)
         install_pkgs=
     else
         echo "No new packages must be installed and all requirements are met."
