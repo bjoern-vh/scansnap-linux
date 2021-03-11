@@ -13,6 +13,7 @@ fi
 # Declare needed variables and constants
 REPO="https://github.com/bjoern-vh/scansnap-linux"
 DRIVER_PATH="/usr/share/sane/epjitsu"
+APT_UPDATE=0
 declare -A SCANNERS
 install_pkgs=
 model=
@@ -38,11 +39,11 @@ function pkg_install()
             echo "No changes were made"
             exit 0
         fi
-        apt update -qq && apt install "$install_pkgs" -qq
-        if [ "$?" -ne "0" ]; then
-            echo "An error occurs while package installation."
-            exit 1
+        if [ "$APT_UPDATE" -ne "1" ]; then
+            apt update -qq || echo "Package lists could not be updated"; exit 1
         fi
+        APT_UPDATE=1
+	apt install "$install_pkgs" -qq || echo "An error occurs while package installation."; exit 1
         install_pkgs=
     else
         echo "No new packages must be installed and all requirements are met."
