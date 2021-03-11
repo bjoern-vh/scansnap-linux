@@ -1,6 +1,9 @@
 # scansnap-linux
 Easy driver installation for Fujitsu SnapScan S1300, S1300i, S1100, S300 and S300M scanners in an linux system. At the moment only debian-based distributions are supported.
 
+* * *
+!!! Please do not use. It is not fully tested !!!
+* * *
 
 ## Installation methods
 
