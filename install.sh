@@ -38,7 +38,7 @@ function pkg_install()
             echo "No changes were made"
             exit 0
         fi
-        apt -qq -y update && apt -qq -y install "$install_pkgs"
+        apt update -qq && apt install "$install_pkgs" -qq
         if [ "$?" -ne "0" ]; then
             echo "An error occurs while package installation."
             exit 1
